@@ -1,0 +1,23 @@
+CREATE TABLE goods (id INTEGER PRIMARY KEY, name TEXT, price INTEGER, quantity INTEGER, category TEXT, color TEXT);
+
+INSERT INTO goods VALUES (1, "Strawberry", 1, 5, "FRUIT", "Red");
+INSERT INTO goods VALUES (2, "Bell Pepper", 3, 6, "VEGETABLE", "Green");
+INSERT INTO goods VALUES (3, "Grapes", 4, 7, "FRUIT", "Red");
+INSERT INTO goods VALUES (4, "Chips", 5, 6, "SNACKS", "Yellow");
+INSERT INTO goods VALUES (5, "Cherries", 8, 3, "FRUIT", "Red");
+INSERT INTO goods VALUES (6, "Coconut", 10, 5, "FRUIT", "Brown");
+INSERT INTO goods VALUES (7, "Sparkling Water", 22, 5, "BEVERAGE", "Blue");
+INSERT INTO goods VALUES (8, "Peaches", 2, 9, "FRUIT", "Pink");
+INSERT INTO goods VALUES (9, "Watermelon", 5, 11, "FRUIT", "Black");
+INSERT INTO goods VALUES (10, "Cheese", 5, 10, "SNACKS", "Yellow");
+INSERT INTO goods VALUES (11, "Eggplant", 6, 9, "VEGETABLE", "Purple");
+INSERT INTO goods VALUES (12, "Squash", 5, 7, "VEGETABLE", "Green");
+INSERT INTO goods VALUES (13, "Lychee", 20, 5, "FRUIT", "Red");
+INSERT INTO goods VALUES (14, "Kumquats", 6, 7, "FRUIT", "Yellow");
+INSERT INTO goods VALUES (15, "Cider", 21, 7, "BEVERAGE", "Brown");
+
+SELECT * FROM goods 
+WHERE price <=10
+ORDER BY price desc;
+
+SELECT SUM(quantity) FROM goods;

@@ -1,0 +1,38 @@
+--Create grocery store database
+
+CREATE TABLE goods (id INTEGER PRIMARY KEY, name TEXT, price INTEGER, quantity INTEGER, category TEXT, popularity INTEGER);
+
+INSERT INTO goods VALUES (1, "Strawberry", 1, 5, "FRUIT", 1);
+INSERT INTO goods VALUES (2, "Bell Pepper", 3, 6, "VEGETABLE", 54);
+INSERT INTO goods VALUES (3, "Grapes", 4, 7, "FRUIT", 20);
+INSERT INTO goods VALUES (4, "Chips", 5, 6, "SNACKS", 2);
+INSERT INTO goods VALUES (5, "Cherries", 8, 3, "FRUIT", 5);
+INSERT INTO goods VALUES (6, "Coconut", 10, 5, "FRUIT", 32);
+INSERT INTO goods VALUES (7, "Sparkling Water", 22, 5, "BEVERAGE", 15);
+INSERT INTO goods VALUES (8, "Peaches", 2, 9, "FRUIT", 6);
+INSERT INTO goods VALUES (9, "Watermelon", 5, 11, "FRUIT", 4);
+INSERT INTO goods VALUES (10, "Cheese", 5, 10, "SNACKS", 22);
+INSERT INTO goods VALUES (11, "Eggplant", 6, 9, "VEGETABLE", 67);
+INSERT INTO goods VALUES (12, "Squash", 5, 7, "VEGETABLE", 84);
+INSERT INTO goods VALUES (13, "Lychee", 20, 5, "FRUIT", 26);
+INSERT INTO goods VALUES (14, "Kumquats", 6, 7, "FRUIT", 154);
+INSERT INTO goods VALUES (15, "Cider", 21, 7, "BEVERAGE", 53);
+
+--Display database ordered by popularity greater than 20
+SELECT * FROM goods 
+WHERE popularity <=20
+ORDER BY popularity asc;
+
+--What is the average fruit price?
+SELECT AVG(price) "avg FRUIT price"
+FROM goods
+WHERE category="FRUIT";
+
+--What are the most expensive 5 items?
+SELECT name, price
+FROM goods
+ORDER by price desc
+limit 5;
+
+--How many items are there in the store currently?
+SELECT SUM(quantity) FROM goods;

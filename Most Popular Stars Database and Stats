@@ -1,0 +1,62 @@
+--In this project, you’re going to make your own table with some small set of “famous people”, then make more tables about things they do and join those to create nice human readable lists.
+
+For example, here are types of famous people and the questions your data could answer:
+
+Movie stars: What movies are they in?
+Popularity data from: https://today.yougov.com/ratings/entertainment/popularity/all-time-actors-actresses/all
+
+CREATE TABLE stars 
+(id INTEGER PRIMARY KEY,
+    first_name TEXT,
+    last_name TEXT,
+    twitter TEXT,
+    status TEXT,
+    birthdate TEXT,
+    popularity INTEGER);
+
+INSERT INTO stars VALUES (1,"Morgan", "Freeman", "@morgan_freeman", "ALIVE", "1937-06-01", 1);
+INSERT INTO stars VALUES (2,"Samuel", "Jackson", "@SamuelLJackson", "ALIVE", "1948-12-21", 6);
+INSERT INTO stars VALUES (3,"Betty", "White", NULL, "DEAD", "1922-01-17", 2);
+INSERT INTO stars VALUES (4,"Harrison", "Ford", NULL, "ALIVE", "1942-07-13", 8);
+INSERT INTO stars VALUES (5,"Robin", "Williams", NULL, "DEAD", "1951-07-21", 3);
+INSERT INTO stars VALUES (6,"Tom", "Hanks", "@tomhanks", "ALIVE", "1956-07-09", 5);
+INSERT INTO stars VALUES (7,"Keanu", "Reeves", NULL, "ALIVE", "1964-09-02", 4);
+INSERT INTO stars VALUES (8,"Audrey", "Hepburn", NULL, "DEAD", "1937-06-01", 12);
+INSERT INTO stars VALUES (9,"Sandra", "Bullock", NULL, "ALIVE", "1964-07-26", 15);
+INSERT INTO stars VALUES (10,"Julia", "Roberts", NULL, "ALIVE", "1967-10-28", 16);
+SELECT * FROM stars ORDER BY popularity;
+
+CREATE TABLE lead_role 
+(stars_id INTEGER PRIMARY KEY AUTOINCREMENT,
+    movie TEXT,
+    type TEXT,
+    rating INTEGER);
+    
+INSERT INTO lead_role (stars_id, movie, type, rating) VALUES (1,"Going In Style", "Movie", 6.6);
+INSERT INTO lead_role (stars_id, movie, type, rating) VALUES (2,"Resurrecting the Champ","Movie", 6.7);
+INSERT INTO lead_role (stars_id, movie, type, rating) VALUES (8,"Breakfast at Tiffany's", "Movie", 7.6);
+INSERT INTO lead_role (stars_id, movie, type, rating) VALUES (7,"John Wick", "Movie", 7.4);
+INSERT INTO lead_role (stars_id, movie, type, rating) VALUES (3,"The Golden Girls", "Show", 8.2);
+INSERT INTO lead_role (stars_id, movie, type, rating) VALUES (6,"Forrest Gump", "Movie", 8.8);
+INSERT INTO lead_role (stars_id, movie, type, rating) VALUES (5,"Mrs. Doubtfire", "Movie", 7.1);
+INSERT INTO lead_role (stars_id, movie, type, rating) VALUES (10,"Pretty Woman", "Movie", 7.1);
+INSERT INTO lead_role (stars_id, movie, type, rating) VALUES (9,"Miss Congeniality", "Movie", 6.3);
+INSERT INTO lead_role (stars_id, movie, type, rating) VALUES (4,"Raiders of the Lost Ark", "Movie", 8.4);
+SELECT * FROM lead_role ORDER BY stars_id asc;
+
+--Actor/Actress listed next to their movie/show
+SELECT s.first_name, s.last_name, l.movie
+FROM stars s 
+JOIN lead_role l
+ON s.id=l.stars_id;
+
+--Group actor/actress by if they have a twitter or not
+SELECT s.first_name, s.last_name, s.twitter
+FROM stars s
+LEFT OUTER JOIN stars twitter
+ON s.twitter=twitter.id
+ORDER BY s.twitter;
+
+
+
+

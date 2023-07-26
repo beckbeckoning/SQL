@@ -4,6 +4,7 @@ For example, here are types of famous people and the questions your data could a
 
 Movie stars: What movies are they in?
 Popularity data from: https://today.yougov.com/ratings/entertainment/popularity/all-time-actors-actresses/all
+Rating data from imdb
 
 CREATE TABLE stars 
 (id INTEGER PRIMARY KEY,
